@@ -20,10 +20,10 @@ class BotSongDownloader():
 
     def inputURL(self, update, context):
 
-        url = update.message.text
+        url = update.message.text    
 
-        if "youtube.com" in (url):
-            
+        try:
+
             yt = YouTube(url)
             video = self.downloadVideo(yt, update)
 
@@ -37,8 +37,9 @@ class BotSongDownloader():
                     os.unlink(audioMp3)
 
             return ConversationHandler.END
+        
+        except:
 
-        else:
             self.somethingBadHappened("No es un link de youtube", update.message.chat)
             return ConversationHandler.END
 

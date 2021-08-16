@@ -1,7 +1,5 @@
-
 from pytube import YouTube
 import os
-from pytube.__main__ import YouTube
 from telegram.ext import ConversationHandler
 from telegram import ChatAction
 
@@ -34,7 +32,6 @@ class BotSongDownloader():
                 if audioMp3 is not False:
 
                     self.sendMP3(update.message.chat, audioMp3)
-                    os.unlink(audioMp3)
 
             return ConversationHandler.END
         
@@ -92,3 +89,4 @@ class BotSongDownloader():
         chat.send_audio(
             audio =  open(mp3File, "rb")
         )
+        os.unlink(mp3File)

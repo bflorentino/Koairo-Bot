@@ -1,4 +1,3 @@
-
 import os, cv2
 from telegram.ext import ConversationHandler
 from telegram import ChatAction
@@ -34,7 +33,7 @@ class QrDecoder:
 
     def __sendTextFromQr(self, chat, textS, filename):
 
-        chat.send_action(action = ChatAction.TYPING),
+        chat.send_action(action = ChatAction.TYPING)
         chat.send_message(text = textS)
         os.unlink(filename)
 

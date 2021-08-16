@@ -32,6 +32,3 @@ class BotShortener():
         chat.send_message(
             text = url
         )
-
-    
-    

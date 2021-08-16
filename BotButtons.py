@@ -1,4 +1,3 @@
-
 from telegram.ext import Updater
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -20,5 +19,6 @@ class BotButtons():
             [InlineKeyboardButton (text = "Codigo QR", callback_data = "qr")],
             [InlineKeyboardButton(text = "Acortar URL", callback_data="url")],
             [InlineKeyboardButton(text = "Descargar video de youtube en MP3", callback_data="mp3")],
+            [InlineKeyboardButton(text = "Conversion de documentos", callback_data = "pdf-docx")]
             ])
         )

@@ -10,7 +10,7 @@ class BotButtons():
 
         update.message.reply_text(
             
-            text = '''Hola, mi nombre es Koairo y soy un bot que puede realizar muchas cosas. Presiona el botón de acorde a lo que necesitas
+            text = '''Presiona el botón de acorde a lo que necesitas
             
             ''',
 

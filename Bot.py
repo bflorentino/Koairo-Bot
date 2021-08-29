@@ -4,7 +4,11 @@ from telegram.ext import Updater, CommandHandler, ConversationHandler, MessageHa
 import QrDecoder, QrCoder
 from BotShortener import BotShortener
 from BotDocConverter import BotDocConverter
+import logging
 import os
+
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
 def start(update, context):
@@ -16,7 +20,7 @@ def qrCallbackHandler(update, context):
 
     query = update.callback_query
     query.answer()
-    query.edit_message_text('Usa /qr para generar un codigo QR o /decode para decodificar una imagen')
+    query.edit_message_text('Usa /qr para generar un codigo QR o /decode para decodificar una imagen con codigo QR')
 
 
 def shortenerCallbackHandler(update, context):

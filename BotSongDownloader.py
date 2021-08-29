@@ -1,4 +1,4 @@
-from pytube import YouTube
+from pytube import YouTube, exceptions
 import os
 from telegram.ext import ConversationHandler
 from telegram import ChatAction
@@ -21,23 +21,22 @@ class BotSongDownloader():
         url = update.message.text    
 
         try:
-
+            
             yt = YouTube(url)
             video = self.downloadVideo(yt, update)
-
+            
             if video is not False:
-                
                 audioMp3 = self.convertVideoToMp3(video, update)
-
+                
                 if audioMp3 is not False:
-
                     self.sendMP3(update.message.chat, audioMp3)
-
-            return ConversationHandler.END
         
-        except:
+        except exceptions.RegexMatchError:
 
             self.somethingBadHappened("No es un link de youtube", update.message.chat)
+            
+        finally:
+
             return ConversationHandler.END
 
 
@@ -54,7 +53,7 @@ class BotSongDownloader():
     def downloadVideo(self, url, update):
 
         try:
-
+            
             stream = url.streams.filter(only_audio = True)
             video = stream.first().download()
             return video
